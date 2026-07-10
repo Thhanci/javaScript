@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>我是标题</h3>
+    <br>
+    <script>
+    //06数值 字符串 布尔类型 null undefined 对象     ES6 symbol bigint
+    
+    //07typeof
+    var age=20;
+    console.log(age);
+
+    // alert("我是弹窗");
+    
+    document.write("我是输出到页面\n\"'123'")
+
+    console.log(typeof age);
+    console.log(typeof(age));
+
+    console.log(typeof null); // object
+    console.log(typeof undefined); // undefined
+
+    //14switch
+    const now = new Date();
+    const day = now.getDay(); 
+    console.log(now);  
+    console.log(day);  
+    switch(day){
+ case 0:
+        console.log("Sunday");
+        break;
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    case 3:
+        console.log("Wednesday");
+        break;
+    case 4:
+        console.log("Thursday");
+        break;
+    case 5:
+        console.log("Friday");
+        break;
+    case 6:
+        console.log("Saturday");
+        break;
+    default:
+        console.log("Invalid day");
+    }
+
+    
+    //20
+    var str="first line <br>\
+    second line<br>\
+    third line<br>\
+    fourth line\nfifth line \nsixth line\n'<b>加粗</b>'"
+    document.write(str);
+    var message='1stLine<br>2ndLine<br>3rdLinde"2132"\n'
+    
+    document.write(message);
+
+
+    //21
+    var str_21="good lucky."
+    let address=str_21.charAt(2)
+    console.log(address)
+    console.log(typeof(address))
+    console.log(str_21.charAt(4),str_21.charAt(0),str_21.charAt('g'))
+
+    //22
+    let str_22_1="good"
+    let str_22_2=" luck"
+    let str_22_3="!"
+    let str_22_4="?"
+    const num_22=100
+
+    let result_22=str_22_1.concat(str_22_2,str_22_3,str_22_4,num_22)
+    console.log(result_22)
+    console.log(str_22_1+str_22_2+str_22_3+str_22_4+num_22)
+
+
+    var one = 1;
+    var two = 2;
+    var three = '3';
+
+    // concat和加号还是有区别的：
+    // concat不管什么类型直接合并成字符串
+    // 加号是遇到数字类型直接做运算，遇到字符串和字符串相连接
+    console.log(''.concat(one, two, three))
+    console.log(one + two + three)
+
+
+    //23
+    var text_23="0123456789"
+    let result_23=text_23.substring(0,3)
+    console.log(result_23)
+    console.log(text_23.substring(9,2))
+    console.log(text_23.substring(3))
+    console.log(text_23.substring(-3,2))
+    console.log(text_23.substr(-3,2))//-3取0，从0-2
+    console.log(text_23.substr(-7,7))//-7取倒数第7个
+    console.log(text_23.substr(-7,-5))//-5取0，字符串长度0
+    console.log(text_23.substr(-7,3))
+    console.log(text_23.slice(-7,5))//slice第一个位置要小于第二个位置，负数就是倒着往前数
+    document.write('<pre>');
+    document.writeln("123")
+    document.writeln(123)
+    document.write('</pre>');
+
+    //25
+    //     indexOf(searchValue, startIndex)
+    // //              ↑            ↑
+    // //          要查找的字符   开始搜索的位置（可选）
+
+    // includes(searchValue, startIndex)
+    // //              ↑            ↑
+    // //          要查找的内容   开始搜索的位置（可选）
+    let hello_25="hello world!123"
+    console.log(hello_25.indexOf("h"))
+    console.log(hello_25.indexOf("123"))
+    console.log(hello_25.indexOf(123))
+    console.log(hello_25.indexOf("h",3))
+    let xlpj_25="相信武魂真身,全军出击，我咬死你。"
+    if(xlpj_25.indexOf("相信武魂真身")>-1){
+        console.log(xlpj_25.indexOf("相信武魂真身"))
+    }
+    if(xlpj_25.includes("全军出击")){
+        console.log(xlpj_25.includes("全军出击"))
+    }
+
+
+    //26
+    let str_26="   hello        ".trim()
+    console.log(str_26)
+    let str_26_1="   hello    \r\t\n  "
+    console.log(str_26_1.trim())
+    console.log(str_26_1.trimStart())
+    console.log(str_26_1.trimEnd())
+
+
+    //27
+    // split(separator, limit)
+    // //    ↑           ↑
+    // //  分隔符（必填） 限制长度（可选）
+    let str_27="how|dare|you|say|that|!"
+    console.log(str_27.split())
+    console.log(str_27.split("|"))
+    console.log(str_27.split("|",3))
+    console.log(str_27.split(undefined,3))
+    console.log(str_27.split(null,3))
+    // undefined 会被当作默认值（不传参），null 会被当作字符串 "null" 来处理。  
+
+
+
+    </script>
+
+</body>
+</html>
