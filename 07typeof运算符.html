@@ -158,8 +158,194 @@
     console.log(str_27.split(null,3))
     // undefined 会被当作默认值（不传参），null 会被当作字符串 "null" 来处理。  
 
+    //28
+    var arr_28 = ["sxt","baizhan","it"]
+
+    var names_28 = [];
+
+    names_28[0] = "iwen";
+
+    names_28[1] = "frank";
+
+    console.log(names_28);
+    var info_28 = [20,"iwen",true];
+    console.log(info_28);
+
+    // 多维数组：数组里面一层数组，成为二维数组
+    var towArr_28 = [100,200,["iwen","frank"]]
+    console.log(towArr_28);
+
+    // 下标:赋值，读取
+    var user_28 = ["iwen","ime","frank"]
+    console.log(user_28[2])
+    console.log(user_28.length);
+    console.log(user_28[5]); // 数组越界: undefined
+
+    let array_28=[1,2,3,"4",null]
+    let copy_28=[]
+    let copy1_28=[1,2]
+    let copy2_28=[2,1]
+    let copy3_28=[2,1,1,1,1,1,1,1,1,1,1,1]
+    copy_28=array_28
+    copy1_28=array_28
+    copy2_28=array_28
+    copy3_28=array_28
+    console.log(array_28)
+    console.log(copy_28)
+    console.log(copy1_28)
+    console.log(copy2_28)
+    console.log(copy3_28)
+    console.log(copy3_28[7])
 
 
+    //29
+    let array_29=["1","a","2","b"]
+    for (let i in array_29){
+        console.log(array_29[i])
+    }
+    console.log("")
+    for (let item in array_29){
+        console.log(item)
+    }
+    let dictionary_29={
+        item1:"a",
+        item2:"b",
+        item3:"c"
+    }
+    for (let item in dictionary_29){
+        console.log(item)
+        console.log(dictionary_29[item])
+    }
+
+    //30
+    let arr_30=[1,2,3,"4"]
+    console.log(typeof arr_30)
+    console.log(typeof null)
+    console.log(typeof undefined)
+    console.log(Array.isArray(arr_30))
+    console.log(Array.isArray([1,2,3,"",null]))
+    console.log(Array.isArray(null))
+    console.log(Array.isArray(undefined))
+    console.log(Array.isArray([123,undefined]))
+    console.log(Array.isArray([123,[]]))
+    // console.log(Array.isArray(undefined_30))
+    console.log(Array.isArray(hello_25))
+
+
+
+    //32
+    var arr_32=[100,200,300,400]
+    var arr1_32=[]
+    arr1_32.shift()
+    console.log(arr1_32.shift())
+    console.log(arr1_32)
+    console.log(arr_32.shift())
+    console.log(arr_32)
+    var item_32
+    let item1_32
+    console.log(item_32)
+    console.log(item1_32)
+    console.log(arr_32)
+    console.log(arr1_32.shift())
+    console.log(item_32=arr_32.shift())
+    while(item_32=arr_32.shift()){
+        console.log(item_32)
+    }
+    console.log(item_32=arr_32.shift())
+    console.log(arr_32)
+
+
+    //33
+    let arr_33=[10,20,30,40,null,undefined]
+    console.log(arr_33.join())
+    console.log(arr_33.join("|"))
+    console.log(arr_33.join(""))
+    let result_33=arr_33.join(" ")
+    console.log(result_33.split(" "))
+
+    //35
+    // let str_35="战术 使人思维明晰\
+    //             纪律 使人意志坚定\
+    //             勇敢 能够击溃邪恶\
+    //             仁慈 能够拯救生命"        
+//     let str_35=`战术 使人思维明晰
+// 纪律 使人意志坚定
+// 勇敢 能够击溃邪恶
+// 仁慈 能够拯救生命`
+    let str_35="战术 使人思维明晰\n纪律 使人意志坚定\n勇敢 能够击溃邪恶\n仁慈 能够拯救生命"
+    console.log(str_35)
+    console.log(str_35.split(""))
+    console.log(str_35.split("").reverse())
+    console.log(str_35.split("").reverse().join(""))
+
+
+    //38//对象是一组键值对key-value的集合
+    //创建一个对象user
+    var user={
+        name:"itbaizhan",
+        age:13,
+        jobs:["itbaizhan","sxt"],
+        flag:true,//valueOf() 是 JavaScript 中所有对象都有的方法，返回原始值。
+        flag:true.valueOf(),//重复定义	同一个对象里有两个 flag 属性，后面的会覆盖前面的
+        getName:function(){
+            console.log("iwen");
+        },
+        container:{
+            frontEnd:"Web前端",
+            backEnd:["python","java"]
+        }
+    }
+    //对象的读取方式：对象名。属性
+    console.log(user.name);
+    console.log(user.jobs);
+    console.log(user.flag);
+
+    for(var i=0;i<user.jobs.length;i++){
+        console.log(user.jobs[i])
+    }
+
+    user.getName()
+
+    //链式调用
+    console.log(user.container.frontEnd);
+    console.log(user.container.backEnd);
+
+
+    //39
+    let num_39=-114
+    console.log(this)
+    console.log(typeof(this))//this 就是当前函数运行时的“主人”，谁调用它，它就指谁。用 apply/call/bind 可以强行指定这个“主人”
+    console.log(Math.abs(num_39))
+    console.log(Math.max(1,1,4,5,1,4,1,9,1,9,3,1,4,1,5,11))
+    console.log(Math.min(...[1,1,4,5,-3,1,4,1,9,1,9,3,1,4,1,5,11]))
+    console.log(Math.min(...[1,1,4,5,-3,1,4,1,9,1,9,3,1,4,1,5,11].map(x=>x*2+1)))
+    console.log(Math.min.apply(null,[1,1,4,5,-3,1,4,1,9,1,9,3,1,4,1,5,11]))
+    console.log(Math.min(...[1,1,4,5,-3,1,4,1,9,1,9,3,1,4,1,5,11,NaN,null,undefined,'a','b','c'].filter(item => typeof item === 'number' && !isNaN(item))))
+    
+    let num1_39=3.14159253582967
+    console.log(Math.floor(num1_39))
+    console.log(Math.ceil(num1_39))
+
+    let arr_39=['苹果','桃子','梨']
+    console.log(arr_39.map(function(item,index){
+        return index+':'+item
+    }))
+    console.log(arr_39.map(item=>({...item,kind:"fruit"})))
+    let arr1_39=['苹果','桃子','梨']
+    console.log(arr1_39.map(function(index,item,arr1_39){
+        return index+':'+item+arr1_39[item]
+    }))
+
+    console.log(Math.random())
+    function getRandomArbitrary(min,max){
+        console.log(Math.floor(min+(max-min)*Math.random()))
+        console.log(Math.ceil(min+(max-min)*Math.random()))
+        return min+(max-min)*Math.random()
+        //return后面的代码不会执行，例如console.log(" ")
+    }
+    console.log(getRandomArbitrary(15,25))
+    console.log(Math.floor(getRandomArbitrary(15,25)))
+    console.log(Math.ceil(getRandomArbitrary(15,25)))
     </script>
 
 </body>
