@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .root{
+            width: 200px;
+            height: 200px;
+            background-color:lightblue;
+            display: flex;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="root" id="root">
+        <div class="box" id="box"></div>
+    </div>
+
+    <script>
+        var root=document.getElementById("root")
+        var box=document.getElementById("box")
+
+        root.onclick=function(){
+            console.log("root")
+        }
+        box.onclick = function(event){
+            // event.preventDefault()
+            event.stopPropagation()
+            console.log("box")
+        }
+    </script>
+</body>
+</html>
+
+<!-- 
+导航/菜单 → flex
+页面整体布局 → grid
+居中 → flex
+卡片墙 → grid 或 flex
+图文混排 → float 或 flex
+表格数据 → table
+弹窗/悬浮 → position 
+-->

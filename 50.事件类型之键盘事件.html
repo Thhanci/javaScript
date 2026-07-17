@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username">
+    <input type="text" id="password">
+
+    <script>
+        var username=document.getElementById("username")
+        username.onkeydown=function(event){
+            console.log("按下了")
+        }
+        username.onkeyup=function(event){
+            // console.log("event "+event)
+            // console.log("event ",event)
+            // console.log("target ",event.target)
+            console.log("value",event.target.value)//value属性就是输入框的数据
+        }
+        //ctrl alt shift meta:数字和字母是有值的，其他的无值
+        username.onkeypress=function(){
+            console.log("keypress")
+        }
+
+
+        var password=document.getElementById("password")
+        password.onkeyup=function(event){
+            //keyCode:代表每个按键的唯一标识
+            // console.log(event.keyCode)
+            console.log(typeof event.keyCode)
+            console.log(event.keyCode.valueOf())
+            if(event.keyCode===13){//回车
+                console.log("开始搜索")
+            }
+        }
+    </script>
+</body>
+</html>

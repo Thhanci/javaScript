@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form  action="/database" id="myForm" method="POST" onsubmit="submitHandle()">  
+        <input type="text" name="username">
+        <button id="resetBtn">重置reset</button>
+        <button>提交表单submit</button>
+    </form>
+    <!--  -->
+    <script>
+        var resetBtn =document.getElementById("resetBtn")
+        var myForm = document.getElementById("myForm")
+        resetBtn.onclick=function(){
+            myForm.reset()
+        }
+        function submitHandle(){
+            console.log("想做的事情")
+            
+        }
+        // myForm.onsubmit = function(e) {
+        //     e.preventDefault();  // 阻止页面刷新
+        //     console.log("表单提交了！");
+        // }
+
+    // 添加额外监听（不会被覆盖）
+    myForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        var username = document.querySelector("input[name='username']").value;
+        
+        fetch("/database", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username: username })
+        }).then(function(response) {
+            return response.text()
+        }).then(function(data) {
+            console.log("服务器返回：", data);
+        })
+    })
+
+    </script>
+
+</body>
+</html>
+
+<!-- http://localhost:3000/51.事件类型之表单事件.html -->
+
+<!-- 
+npm install -g http-server
+http-server --cors 
+-->
+
+<!-- 因为 onsubmit="submitHandle()" 和 myForm.onsubmit = function(e) { ... } 同时存在，后者覆盖了前者，所以 submitHandle() 没有被执行。 -->
+
+
+
+<!-- 
+HTTP 请求方法（常见）
+方法	作用	CRUD 对应
+GET	获取数据	查（Read）
+POST	创建数据	增（Create）
+PUT	完整更新数据	改（Update）
+PATCH	部分更新数据	改（Update）
+DELETE	删除数据	删（Delete）
+HEAD	获取响应头（不获取内容）	检查资源是否存在
+OPTIONS	询问服务器支持哪些方法	跨域预检
+ -->
+
+<!-- 
+ reset()	重置表单到初始值	form.reset()
+submit()	提交表单	form.submit()
+checkValidity()	检查表单是否有效	form.checkValidity()
+reportValidity()	检查有效性并显示提示	form.reportValidity()
+requestSubmit()	提交表单（带验证）	form.requestSubmit()
+ -->

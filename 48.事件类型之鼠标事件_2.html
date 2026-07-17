@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .root{
+            position: relative;
+            top: 200px; 
+            left: 20px;
+            display: flex;
+            justify-content: center;  /* 水平居中 */
+            align-items: center;      /* 垂直居中 */
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            
+        }
+    </style>
+</head>
+<body>
+
+    <div class="root" id="root">
+        <div class="box" id="box"></div>
+    </div>
+
+    <script>
+        //mouse enter\mouse leave 和 mouse over\mouse out
+        var root =document.getElementById("root")
+        var box = document.getElementById("box")
+
+        root.onmouseenter = function(){
+            console.log("enter:鼠标进入了")
+        }
+        root.onmouseover = function(){
+            console.log("over:鼠标进入了 (多层)")
+        }
+        root.onmouseleave = function(){
+            console.log("leave:鼠标离开了")
+        }
+        root.onmouseout = function(){
+            console.log("out:鼠标离开了 (多层)")
+        }
+
+        
+    </script>
+    
+</body>
+</html>

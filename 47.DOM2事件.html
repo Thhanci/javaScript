@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        //DOM2事件：优点：事件不会被覆盖  缺点：写起来麻烦
+        var btn=document.getElementById("btn")
+        btn.addEventListener("click",function(){
+            console.log("点击了1")
+        })
+        btn.addEventListener("click",function(){
+            console.log("点击了2")
+        })
+
+        let canRun = true;
+        btn.addEventListener("mousemove", function(e) {
+            if (!canRun) return;  // 10秒内不执行
+            canRun = false;       // 关闭执行权限
+            
+            // 执行你的代码
+            console.log("事件类型：", e.type);
+            console.log("鼠标位置：", e.clientX, e.clientY);
+            console.log("触发元素：", e.target);
+            console.log("鼠标按键：", e.button);
+            console.log(e.target);
+            console.log(e);
+            console.log(typeof e);
+            
+            // 10秒后重新开启
+            setTimeout(() => {
+                canRun = true;
+            }, 10000);  // 10000ms = 10秒
+        });
+    </script>
+</body>
+</html>
+
+
+<!-- 
+1. 鼠标事件
+javascript
+click       // 单击
+dblclick    // 双击
+mousedown   // 鼠标按下
+mouseup     // 鼠标松开
+mousemove   // 鼠标移动
+mouseover   // 鼠标移入
+mouseout    // 鼠标移出
+mouseenter  // 鼠标进入（不冒泡）
+mouseleave  // 鼠标离开（不冒泡）
+contextmenu // 右键菜单
+2. 键盘事件
+javascript
+keydown     // 按键按下
+keyup       // 按键松开
+keypress    // 按键按压（已废弃）
+3. 表单事件
+javascript
+focus       // 获得焦点
+blur        // 失去焦点
+change      // 值改变
+input       // 输入变化
+submit      // 表单提交
+reset       // 表单重置
+4. 窗口/文档事件
+javascript
+load        // 加载完成
+unload      // 卸载
+scroll      // 滚动
+resize      // 窗口大小变化
+DOMContentLoaded // DOM 加载完成
+beforeunload // 页面关闭前
+5. 拖拽事件
+javascript
+drag        // 拖拽
+dragstart   // 开始拖拽
+dragend     // 拖拽结束
+dragover    // 拖拽悬停
+drop        // 放置
+dragenter   // 进入目标
+dragleave   // 离开目标
+6. 触摸事件（移动端）
+javascript
+touchstart  // 触摸开始
+touchmove   // 触摸移动
+touchend    // 触摸结束
+touchcancel // 触摸取消
+7. 其他事件
+javascript
+copy        // 复制
+cut         // 剪切
+paste       // 粘贴
+error       // 加载错误
+abort       // 加载中止
+animationstart // 动画开始
+animationend   // 动画结束
+transitionend  // 过渡结束
+ -->
+
+<!-- 
+ setTimeout(callback, delay, param1, param2, ...);
+//          ↑         ↑       ↑
+//       回调函数   延迟时间  传给回调的参数
+
+// 传递参数
+setTimeout(function(name, age) {
+    console.log(name, age);
+}, 1000, "张三", 25);
+// 输出：张三 25
+
+// 存储定时器 ID
+let timer = setTimeout(() => {
+    console.log("不会执行");
+}, 5000);
+
+// 取消定时器（还没到时间就清除）
+clearTimeout(timer);
+ -->

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 5px solid lightcoral;
+            padding: 10px ;
+            margin: 20px;
+            background: lightgreen;
+        }
+
+        h3{
+            height: 500px;
+        }
+        .class{
+            background-color: lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box" 
+    style="display: flex;  justify-content: center; align-items: center ">
+    123</div>
+    <div class="box">123</div>
+    <h3>标题1</h3>
+    <h3>标题2</h3>
+    <h3>标题3</h3>
+    <h3>标题4</h3>
+
+    <div class="class" style="display: flex;">flex</div>
+    <div class="class" style="display: table;">table   table   table   table</div>
+    <div class="class" style="display: table;">table</div>
+    <div class="class" style="display: table;">table</div>
+    <div class="class" style="display: grid;">grid</div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="class" style="display: block;">block</div>
+    <div class="class" style="display: inline;">inline</div>
+    <div class="class" style="display: inline-block;">inline-block</div>
+
+    <br>
+    <br>
+    <br>
+    
+    <div class="class" style="display: none;">none</div>
+    <div class="class" style="display: contents;">contents</div>
+
+    <br>
+    <br>
+    <br>
+    
+    <div style="position: relative; top: 10px;">relative</div>
+    <br>
+    <div style="position: absolute; left: 20px;">aboslute</div>
+    <br>
+    <div style="position: fixed; top: 0 ;left: 50px;">fixed</div>
+    <br>
+    <div style="position: sticky; left: 50px; top: 300px;">sticky</div>
+
+    <br>
+    <br>
+    <br>
+    
+    <div style="float: left;">float left</div>
+    <div style="float: right;">float right</div>    
+
+    <script>
+        console.log(box)
+        var box = document.getElementById("box")
+        console.log(box)
+        console.log(box.clientWidth)
+        console.log(box.clientHeight)
+
+        //获取视口高度（屏幕高度）
+        console.log(document.documentElement.clientHeight)
+        //获取页面高度
+        console.log(document.body.clientHeight)//总高度 = 220 + 220 + body 自身边距 ≈ 479
+
+        console.log("___________")
+
+        //获取滚动高度
+        console.log(document.documentElement.scrollHeight)
+        console.log(document.documentElement.scrollLeft)
+        console.log(box.scrollHeight)
+
+        console.log("___________")
+
+        console.log(box.offsetWidth)
+        console.log(box.offsetHeight)
+        
+    </script>
+</body>
+</html>
+
+
+
+<!-- 除了 flex，CSS 还有 grid（网格）、block（块级）、inline（行内）、inline-block（行内块）、table（表格）、position（定位）、float（浮动）等布局方式。 -->

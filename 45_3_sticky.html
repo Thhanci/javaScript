@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        height: 8000px;          /* 父容器有滚动空间 */
+        overflow-y: auto;       /* 允许滚动 */
+        border: 1px solid black;
+        background-color: lightgreen;
+    }
+    .sticky-box {
+        position: sticky;
+        top: 200px;              /* 滚动到顶部 200px 时固定 */
+        background: lightblue;
+        padding: 20px;
+  
+    }
+    .content {
+        height: 1000px;         /* 内容撑高，产生滚动 */
+        background: lightcoral;
+        top: 0;
+    }
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+        <!-- <div class="content">滚动内容</div> -->
+        <div class="sticky-box">我 sticky（滚动到顶部就固定）</div>
+        <div class="content">滚动内容</div>
+    </div>
+
+</body>
+</html>

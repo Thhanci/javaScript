@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3{
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>标题1</h3>
+    <h3>标题1</h3>
+    <h3>标题1</h3>
+    <h3>标题1</h3>
+    <h3>标题1</h3>
+    <h3>标题1</h3>
+    <h3>标题1</h3>
+
+    <script>
+
+        function throttle(fn,delay){
+            var valid=true
+            return function(){
+                if(!valid){
+                    return false
+                }
+                valid = false
+                setTimeout(function(){
+                    fn()
+                    valid = true
+                },delay)
+            }
+        }
+
+        window.onscroll = throttle(scrollHandle,2000)
+
+        function scrollHandle(){
+            var scrollTop=document.documentElement.scrollTop
+            console.log(scrollTop)
+        }
+
+    </script>
+    
+</body>
+</html>
+
+
+<!-- 
+```javascript
+/*
+ * ============================================================
+ * 防抖（Debounce）与节流（Throttle）笔记
+ * ============================================================
+ * 
+ * 一、防抖（Debounce）
+ *    核心：等用户停下来了再执行
+ *    原理：每次触发都清除旧定时器，重新计时
+ *    结果：只执行最后一次
+ *    类比：电梯关门（有人一直按开门键，门一直不关）
+ *    场景：搜索框输入、窗口resize、表单验证
+ * 
+ * 二、节流（Throttle）
+ *    核心：每隔一段时间执行一次
+ *    原理：用开关控制，执行后关闭，延迟后重新打开
+ *    结果：按固定频率执行多次
+ *    类比：限流闸门（不管上游来多少水，每隔固定时间放一次）
+ *    场景：滚动事件、鼠标移动、游戏技能冷却
+ * 
+ * 三、区别对比
+ *    防抖 → 最后一次触发后执行 → 只执行一次
+ *    节流 → 固定时间间隔执行 → 执行多次
+ * 
+ * ============================================================
+ */
+
+// 防抖实现
+function debounce(fn, delay) {
+    var timer = null;                       // 定时器（闭包变量）
+    return function() {
+        if (timer) {
+            clearTimeout(timer);            // 清除旧定时器（重新计时）
+        }
+        timer = setTimeout(fn, delay);      // 设置新定时器
+    };
+}
+
+// 节流实现
+function throttle(fn, delay) {
+    var valid = true;                       // 开关（闭包变量）
+    return function() {
+        if (!valid) {
+            return false;                   // 开关关闭 → 拦截
+        }
+        valid = false;                      // 执行前关闭开关
+        setTimeout(function() {
+            fn();                           // 执行函数
+            valid = true;                   // 延迟后重新打开
+        }, delay);
+    };
+}
+
+// 防抖使用场景：搜索框
+var searchInput = document.getElementById("search");
+searchInput.oninput = debounce(function() {
+    console.log("发送搜索请求");
+}, 500);
+
+// 节流使用场景：滚动
+window.onscroll = throttle(function() {
+    console.log("滚动位置：", window.scrollY);
+}, 200);
+``` 
+-->

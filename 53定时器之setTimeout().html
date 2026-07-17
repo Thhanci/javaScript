@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // setTimeout(function(){
+        //     console.log("大家好，3秒之后执行")
+        // },3000)
+        // setTimeout(console.log("喵喵喵?"),1000)
+
+
+
+
+
+
+
+        // var name = "iwen"
+        // var user = {
+        //     name:"itbaizhan",
+        //     // getName:function(){
+        //     //     //this永远指向当前调用者
+        //     //     console.log(this.name)
+        //     // }
+
+        //     // getName:function(){
+        //     //     setTimeout(function(){
+        //     //         //setTimeout使得内部的this关键字指向全局环境，
+        //     //         // 而不是定义时所在的那个对象
+        //     //         console.log(this.name)
+        //     //     },1000)
+        //     // }
+
+        //     // getName:function(){
+        //     //         var that=this
+        //     //         setTimeout(function(){
+        //     //             console.log(that.name)
+        //     //         },1000)
+        //     // }
+
+        // }
+
+
+
+        // user.getName()  //this  itbaizhan
+        //                 //setTimeout  iwen
+        //                 //that itbaizhan
+        
+
+
+        
+
+        var timer = setTimeout(function(){
+            console.log("大家好,3秒后执行")
+        },3000)
+        //取消定时器
+        clearTimeout(timer)
+                        //clearTimeout 
+    </script>
+    
+</body>
+</html>

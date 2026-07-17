@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h3{
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h3>799</h3>
+    <h3>799</h3>
+    <h3>799</h3>
+    <h3>799</h3>
+    <h3>799</h3>
+    <h3>799</h3>
+
+    <script>
+
+        //滚动事件
+        // window.onscroll = function(){
+        //     console.log("页面滚动了")
+        // }
+
+
+
+
+        // window.onscroll=scrollHandle
+
+        // function scrollHandle(){
+        //     console.log("页面滚动了")
+        // }
+
+
+
+
+
+        function debounce(fn,delay){
+            var timer = null
+            return function(){
+                if(timer){
+                    clearTimeout(timer)
+                }
+                timer=setTimeout(fn,delay)//如果在滚动的时候，有定时器，就清除了，换个新的重新计时，旧的防转转
+            }
+        }
+
+        //滚动事件
+        window.onscroll=debounce(scrollHandle,200)
+
+        function scrollHandle(){
+            var scrollTop=document.documentElement.scrollTop
+            console.log(scrollTop)
+        }
+
+    </script>
+</body>
+</html>
+
+<!-- 
+/*
+ * ============================================================
+ * 闭包（Closure）笔记
+ * ============================================================
+ * 
+ * 一、闭包是什么？
+ *    闭包 = 函数 + 它能访问的外部变量
+ *    简单说：内部函数“带走”了外部函数的变量，即使外部函数执行完了，这些变量也不会被销毁。
+ * 
+ *    核心：“把变量带出去，不让它销毁”
+ * 
+ * 二、闭包的三个条件
+ *    1. 有函数嵌套（函数里面定义函数）
+ *    2. 内部函数使用了外部函数的变量
+ *    3. 内部函数被“带出去”（返回、赋值、回调等）
+ * 
+ * 三、闭包的用途
+ *    1. 数据私有化（封装）
+ *    2. 防抖/节流
+ *    3. 函数工厂
+ * 
+ * 四、闭包 vs 普通内部函数
+ *    普通内部函数 → 不返回 → 不形成闭包
+ *    闭包 → 返回内部函数 → 形成闭包
+ * 
+ * 五、注意事项
+ *    1. 变量不会被垃圾回收 → 可能内存泄漏
+ *    2. 不要滥用闭包
+ * ============================================================
+ */
+
+// 示例：闭包（把变量带出去）
+function outer() {
+    var count = 0;              // 外部变量（会被“带走”）
+
+    function inner() {          // 内部函数
+        count++;                // 内部函数使用了外部变量
+        console.log(count);
+    }
+
+    return inner;               // 返回内部函数 → 形成闭包 ✅
+}
+
+var fn = outer();               // outer 执行完，count 被保留
+fn();  // 1
+fn();  // 2
+fn();  // 3
+
+// 示例：普通内部函数（不返回，不形成闭包）
+function outer2() {
+    var count = 0;
+
+    function inner() {
+        count++;
+        console.log(count);
+    }
+
+    inner();                    // 内部函数没有返回 → 不形成闭包 ❌
+}
+
+outer2();  // 1
+outer2();  // 1（每次重新创建 count）
+
+// 示例：数据私有化（封装）
+function createCounter() {
+    var count = 0;              // 私有变量，外部无法直接访问
+
+    return {
+        increment: function() {
+            count++;
+            return count;
+        },
+        decrement: function() {
+            count--;
+            return count;
+        },
+        getCount: function() {
+            return count;
+        }
+    };
+}
+
+var counter = createCounter();
+console.log(counter.increment());  // 1
+console.log(counter.increment());  // 2
+console.log(counter.getCount());   // 2
+console.log(counter.count);        // undefined（无法直接访问）
+
+// 示例：循环中的闭包陷阱
+for (var i = 0; i < 3; i++) {
+    setTimeout(function() {
+        console.log(i);  // 输出：3 3 3（闭包陷阱）
+    }, 1000);
+}
+
+// 解决：用 let（块级作用域）
+for (let i = 0; i < 3; i++) {
+    setTimeout(function() {
+        console.log(i);  // 输出：0 1 2
+    }, 1000);
+}
+
+// 或用 IIFE 创建独立作用域
+for (var i = 0; i < 3; i++) {
+    (function(j) {
+        setTimeout(function() {
+            console.log(j);  // 输出：0 1 2
+        }, 1000);
+    })(i);
+} 
+-->
+
+
+<!-- 
+/*
+ * ============================================================
+ * 函数工厂（Function Factory）笔记
+ * ============================================================
+ * 
+ * 一、函数工厂是什么？
+ *    函数工厂是一个“生产函数”的函数
+ *    它接收参数配置，返回一个新函数
+ * 
+ *    生活类比：汽车工厂输入配置，输出一辆汽车
+ * 
+ * 二、为什么需要函数工厂？
+ *    1. 避免重复代码
+ *    2. 批量生产类似功能的函数
+ *    3. 配置化创建函数
+ * 
+ * 三、和闭包的关系
+ *    函数工厂天然形成闭包
+ *    内部函数“带走”了外部函数的变量
+ * 
+ * 四、常见应用
+ *    1. 创建带不同前缀的日志函数
+ *    2. 创建不同倍数的乘法函数
+ *    3. 创建不同延迟的定时器
+ *    4. 计数器工厂
+ * 
+ * ============================================================
+ */
+
+// 一、基本用法
+function createGreeter(greeting) {
+    return function(name) {
+        console.log(greeting + ", " + name);
+    };
+}
+
+var sayHello = createGreeter("你好");
+var sayHi = createGreeter("嗨");
+
+sayHello("张三");  // 你好, 张三
+sayHi("李四");     // 嗨, 李四
+
+// 二、创建带不同前缀的日志函数
+function createLogger(prefix) {
+    return function(message) {
+        console.log("[" + prefix + "] " + message);
+    };
+}
+
+var info = createLogger("INFO");
+var error = createLogger("ERROR");
+
+info("服务器启动");   // [INFO] 服务器启动
+error("连接失败");    // [ERROR] 连接失败
+
+// 三、创建不同倍数的乘法函数
+function createMultiplier(factor) {
+    return function(num) {
+        return num * factor;
+    };
+}
+
+var double = createMultiplier(2);
+var triple = createMultiplier(3);
+
+console.log(double(5));  // 10
+console.log(triple(5));  // 15
+
+// 四、创建不同延迟的定时器
+function createDelay(delay) {
+    return function(fn) {
+        setTimeout(fn, delay);
+    };
+}
+
+var delay1s = createDelay(1000);
+var delay2s = createDelay(2000);
+
+delay1s(() => console.log("1秒后执行"));
+delay2s(() => console.log("2秒后执行"));
+
+// 五、计数器工厂（闭包示例）
+function createCounter() {
+    var count = 0;          // 被内部函数“带走”
+
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+var counter1 = createCounter();
+var counter2 = createCounter();
+
+console.log(counter1());  // 1
+console.log(counter1());  // 2
+console.log(counter2());  // 1（独立的计数器）
+
+// 六、封装对象工厂
+function createUser(name, age) {
+    return {
+        getName: function() {
+            return name;
+        },
+        getAge: function() {
+            return age;
+        },
+        setAge: function(newAge) {
+            age = newAge;
+        }
+    };
+}
+
+var user1 = createUser("张三", 25);
+console.log(user1.getName());  // 张三
+user1.setAge(26);
+console.log(user1.getAge());   // 26
+ -->
+

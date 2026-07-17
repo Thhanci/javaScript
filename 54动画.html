@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #someDiv{
+            width: 100px;
+            height: 100px;
+            background: red;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="someDiv"></div>
+
+    <script>
+        var div =document.getElementById("someDiv")
+        //不透明度:    opacity:取值范围0-1
+
+
+
+        // var opacity =1
+        // var fade=setInterval(function(){
+        //     if(opacity>0){
+        //         opacity-=0.05
+        //         div.style.opacity=opacity
+        //         console.log(div.style.opacity)
+        //     }else{
+        //         clearInterval(fade)
+        //     }
+        // },90)
+    
+    var style = getComputedStyle(div);
+    console.log(style.opacity);
+
+    var div = document.getElementById("someDiv");
+    var opacity = 100;
+    var direction = -1;  // -1 淡出，1 淡入
+
+    var fade = setInterval(function() {
+        opacity += direction * 5;
+        
+        if (opacity <= 0) {
+            opacity = 0;
+            direction = 1;  // 改为淡入
+        } else if (opacity >= 100) {
+            opacity = 100;
+            direction = -1;  // 改为淡出
+        }
+        
+        div.style.opacity = opacity / 100;
+        console.log(div.style.opacity);
+    }, 180);
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+<!--
+ 因为浮点数精度问题。0.05 在二进制中无法精确表示，多次减法累积的微小误差导致结果不是 0，而是 -3.19189e-16。
+var opacity = 100;  // 用整数
+var fade = setInterval(function() {
+    if (opacity > 0) {
+        opacity -= 5;
+        div.style.opacity = opacity / 100;  // 转换时用除法
+    } else {
+        clearInterval(fade);
+        div.style.opacity = 0;
+    }
+}, 90); 
+-->
+
+
