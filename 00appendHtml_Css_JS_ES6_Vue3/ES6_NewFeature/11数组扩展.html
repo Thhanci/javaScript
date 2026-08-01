@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>标题1</h3>
+    <h3>标题2</h3>
+    <h3>标题3</h3>
+
+
+    <script>
+        //类数组，伪数组，只能使用数组的读取方式和length属性，不能使用数组方法:push
+        
+        //1 arguments                               //2 NodeList 3 HTMLCollection
+        function add(){
+            console.log(arguments)
+            console.log(arguments.length)
+            console.log(arguments[0])
+            console.log(arguments[1])
+            console.log(arguments[2])
+
+            var result=Array.from(arguments)
+            result.push(40)
+            console.log(result)
+
+        }
+        add(10,20,30,40,50)
+        console.log([10,20,30,40,50])
+
+
+
+        //2 元素集合
+        console.log("~~~~~~~~~~~~")
+        let titles=document.querySelectorAll("h3")//or operation
+        console.log(titles)
+        console.log(titles[0])
+        console.log(Array.from(titles))
+
+
+
+        //3类似数组的对象
+        console.log("~~~~~~~~~~~~")
+        var user={
+            "0":"iwen",
+            "1":20,
+            "2":"男",
+            length:3
+        }
+        console.log(user.length)
+        console.log(Object.keys(user).length)
+        console.log(Array.from(user))
+
+
+
+        console.log(Array.of(10,20,30,40,50,"!"))
+
+
+        console.log(Array(3))
+
+        //真正的字典
+        console.log("~~~~~~~~~~~~")
+        var userMap=new Map([
+            ["0","iwen"],
+            ["1",20],
+            ["2","男"],
+            ["length",3]
+        ])
+        console.log(userMap.get("0"))
+        console.log(userMap.size)
+
+
+    </script>
+
+</body>
+</html>

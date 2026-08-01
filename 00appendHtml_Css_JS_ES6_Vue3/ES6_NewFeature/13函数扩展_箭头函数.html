@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function fn1(){
+
+        }   
+        
+        //第二种:赋值方式声明函数
+        var fn2 = function(x,y){
+            return x+y
+        }
+
+        //第三种:箭头函数声明=>
+        var fn4 =x=>x
+        var fn4 = ()=>10
+        var fn3 = (x,y)=>x+y
+        console.log(fn3(10,20))
+
+        var fn5 = function(x,y){
+            var z=10
+            return x+y+z
+        }
+
+        var fn6=(x,y)=>{
+            var z=10
+            return x+y+z
+        }
+
+        var fn7=function(){
+            return{
+                x:10,
+                y:20
+            }
+        }
+
+        var fn8 = ()=>({x:10,y:20})
+
+
+        var arr=[10,20,30,40,50]
+        arr.map((element,index)=>{
+            console.log(index+" "+element)
+        })
+        console.log("=====================================")
+        arr.map((element,index)=>console.log(index+" "+element))
+
+
+
+
+        // var name="ime"
+        // var user={
+        //     name:"iwen",
+        //     age:20,
+        //     getName:function(){
+        //         console.log(this.name)  //this指向当前getName的调用者 user
+        //     }
+        // }
+        // user.getName()
+
+
+        var name="ime"
+        var user={
+            name:"iwen",
+            age:20,
+            getName(){
+                var that=this  //that指向当前getName的调用者 user
+                setTimeout(function(){
+                    console.log(that.name)//setTimeout是全局调用，所以this.name指向ime
+                    //setTimeout 是全局函数（window.setTimeout），由全局对象调用。
+                })
+            }
+        }
+        user.getName()
+        console.log(window.name) //ime
+
+
+
+        var name="ime"
+        var user={
+            name:"iwen",
+            age:20,
+            getName(){
+                setTimeout(()=>{
+                    console.log(this.name)  //匿名函数()=>  没有自己的this对象，所以this指向上一级getName的调用者 user
+                    //箭头函数，this指向当前getName的调用者 user
+                })
+            }
+        }
+        user.getName()
+        //箭头函数里面根本没有自己的this，而是引用外层的this
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

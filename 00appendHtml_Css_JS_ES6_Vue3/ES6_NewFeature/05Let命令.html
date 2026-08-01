@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        /*
+            1.var关键字:函数级的作用域
+        */
+
+        // if(true){
+        //     var i=10;
+        // }
+
+
+
+        // function fn1(){
+        //     var i=10;
+        // }
+        // fn1();
+
+        
+        //let是花括号级别的作用域 块级作用域
+        //var是函数级作用域
+        //let不存在变量提升
+        //let不允许重复声明
+        //闭包用Let  let 是块级作用域，每次循环都会创建新的 i，每个闭包都有自己的 i。
+        // if(true){
+        //     let i=10;
+        // }
+
+
+
+        // console.log(i);
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var a=[]
+        for(var i=0;i<10;i++){
+            a[i]=function(){
+                console.log(i)
+            }
+        }
+        console.log(a)
+        a[6]()
+
+
+
+
+    </script>
+</body>
+</html>

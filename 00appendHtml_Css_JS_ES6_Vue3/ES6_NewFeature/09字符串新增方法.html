@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>    
+    
+        //ES6新增了字符串的扩展方法
+        var str1="hello"
+        console.log(str1.startsWith("h"))
+        console.log(str1.endsWith("o"))
+        console.log(str1.includes("e"))
+
+        //repeat()方法可以将字符串重复n次
+        console.log(str1.repeat(3))
+
+
+        console.log("~~~~~~~~~~~~")
+        var allStr="helloWorld"
+        var str ="hell"
+        console.log(allStr.indexOf(str))
+        console.log(allStr.includes(str,1))
+        console.log(allStr.startsWith(str))
+        console.log(allStr.endsWith(str))
+
+
+        console.log("~~~~~~~~~~~~")
+        var x="x"
+        console.log(x.repeat(3))
+        
+        var h="hello"
+        console.log(h.padStart(10,"ab"))
+        console.log(h.padEnd(10,"ab"))
+
+        var it="    itbaizhan  "
+        console.log(it.trim())
+        console.log(it.trimStart()) 
+        console.log(it.trimEnd())
+
+        var myIt="itbaizhan"
+        console.log(myIt.at(3))
+        console.log(myIt.at(20))
+        console.log(myIt.at(-3))
+
+
+        var myIt="相信武魂真身"
+        console.log(myIt.at(3))
+        console.log(myIt.at(-3))
+    </script>
+</body>
+</html>

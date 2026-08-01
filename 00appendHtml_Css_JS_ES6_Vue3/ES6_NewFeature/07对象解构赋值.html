@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var user={
+            name:"iwen",
+            age:20
+        }
+        console.log(user.name)
+        console.log(user.age)
+        //利用解构赋值方式简化他
+        const{name,age}=user
+        console.log(name,age)
+
+        const {log}=console
+        log(name,age);
+
+        const {abs,ceil,floor,max,min,pow,random,round,sqrt}=Math
+        log(random())
+
+
+
+        //不建议用，如果这情况要么该变量名要么user.name1
+        var user={
+            name1:"ime"
+        }
+        let name1="iwen"
+        ({name1}=user)
+        name1=user.name1
+
+    </script>
+</body>
+</html>
