@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //class类不存在变量提升
+        //提升是 JavaScript 的一种机制：
+        // 变量和函数声明会被移到代码的最顶部
+        // （在当前作用域内），就像被“提”上去了。
+        class Person{
+            constructor(name,age){
+                this.name=name;
+                this.age=age;
+            }
+            getName(){
+                console.log(this.name);
+            }
+        }
+
+        var p = new Person("iwen",20)
+        p.getName();
+
+        var p1 = new Person("ime",20)
+        p1.getName();
+        
+
+    </script>
+
+</body>
+</html>

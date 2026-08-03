@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    
+    <script>
+        //网络请求之间有没有用依赖关系? 很多接口可能要依赖上一个接口的数据 才能执行
+
+        function ajax(url) {
+            return new Promise(function (resolve,reject){
+                $.getJSON(url,function(result){     //等价于jquery.getJSON
+                    resolve(result)
+                },function (error){
+                    reject(error)
+                })
+            })
+        }
+
+        async function getInfo(){
+            var posts = await ajax("https://jsonplaceholder.typicode.com/posts")
+            var postDetail  = await ajax("https://jsonplaceholder.typicode.com/posts/" + posts[0].id)
+            var userInfo  = await ajax("https://jsonplaceholder.typicode.com/users/" + postDetail.userId)
+            console.log("帖子标题:", posts[0].title)
+            console.log("帖子详情:", postDetail.body)
+            console.log("作者信息:", userInfo.name)
+        }
+        getInfo()
+
+
+    </script>
+
+</body>
+</html>

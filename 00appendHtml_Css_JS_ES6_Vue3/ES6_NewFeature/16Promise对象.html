@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="box"></div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="box2"></div>
+
+    <script>
+        
+        var box=document.getElementById("box");
+        var box2=document.getElementById("box2");
+
+        function loadImageAsync(url){
+            const promise = new Promise(function(resolve,reject){
+                //异步处理:消耗时间的代码
+                const image = new Image();//创建image对象
+                image.referrerPolicy = 'no-referrer'; 
+                image.src=url;
+                image.onload=function(){
+                    resolve(image);
+                }
+                image.onerror=function(){
+                    reject(new Error('Could not load image at '+url));
+                }
+            })
+            return promise;
+
+            // return new Promise(function(resolve,reject){
+            //     //异步处理:消耗时间的代码
+            //     const image = new Image();//创建image对象
+            //     image.src=url;
+            //     image.onload=function(){
+            //         resolve(image);
+            //     }
+            //     image.onerror=function(){
+            //         reject(new Error('Could not load image at'+url));
+            //     }
+            // })
+        }
+
+        const promise = loadImageAsync('https://www.baidu.com/img/bd_logo1.png');
+        const promise2 = loadImageAsync('https://bkimg.cdn.bcebos.com/pic/6d81800a19d8bc3e5e4886198b8ba61ea9d345a5');
+        promise.then(function(data){
+            //成功
+            console.log(data);
+            box.appendChild(data);
+        },function(error){
+            //失败
+            box.innerHTML=error.message;
+            box.innerHTML=error;
+            box.innerHTML="图片加载失败";
+            console.log(error);
+        })
+
+
+        promise2.then(function(data){
+            //成功
+            console.log(data);
+            box2.appendChild(data);
+        },function(error){
+            //失败
+            box2.innerHTML=error.message;
+            box2.innerHTML=error;
+            box2.innerHTML="图片加载失败";
+            console.log(error);
+        })
+
+
+    </script>
+
+</body>
+</html>

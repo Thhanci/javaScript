@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //Asynchronous JavaScript and XML
+        //AJAX: Asynchronous JavaScript and XML
+        //AJAX is a technique for creating fast and dynamic web pages. It allows web pages to be updated asynchronously by exchanging small amounts of data with the server behind the scenes. This means that it is possible to update parts of a web page, without reloading the whole page.
+        //AJAX is not a programming language, but a set of web development techniques using many web technologies on the client side to create asynchronous web applications. With AJAX, web applications can send and retrieve data from a server asynchronously (in the background) without interfering with the display and behavior of the existing page.
+        //In the past, developers used to use XMLHttpRequest to send and receive data from a server. However, with the introduction of the Fetch API, developers can now use a more modern and flexible approach to make AJAX requests.
+        //The Fetch API provides a more powerful and flexible feature set for making HTTP requests. It is based on promises, which makes it easier to work with asynchronous code. The Fetch API is also more modern and has better support for features like streaming and caching.
+        //XHR对象
+        //XHMLHttpRequest对象是浏览器提供的一个JavaScript对象，它允许我们在不重新加载整个页面的情况下与服务器进行交互。它可以用来发送HTTP请求并接收响应，从而实现AJAX功能。
+        //Fetch API 
+        //客户端	Client	服务端	Server
+
+        const getJSON = function(url){
+            const promise = new Promise(function(resolve,reject){
+                //异步操作:网络请求代码
+                
+                const handler = function(){
+                    if(this.readyState !==4){
+                        //0 1 2 3 4
+                        return;
+                    }
+                    if(this.status === 200){
+                        resolve(this.response);
+                    } else {
+                        reject(new Error(this.statusText));
+                    }
+                }
+                
+                const client = new XMLHttpRequest();
+
+                client.open("GET",url);
+                
+                client.onreadystatechange = handler;
+                client.responseType="json";
+                client.setRequestHeader("Accept","application/json");
+
+                client.send();
+            });
+
+            return promise;
+        }
+
+        getJSON("https://jsonplaceholder.typicode.com/users/1")
+        .then(function(data){
+            console.log("Contents: "+data);
+        },function(error){
+            console.error("出错了 ",error);
+        })
+
+
+    </script>
+
+</body>
+</html>
